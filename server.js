@@ -14,19 +14,10 @@ mongoose
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.Console(err));
 
-app.get("/customers", (req, res) => {
-  const customers = [
-    { id: 1, firstName: "John", lastName: "Doe" },
-    { id: 2, firstName: "Brad", lastName: "Traversy" },
-    { id: 3, firstName: "Mary", lastName: "Swanson" }
-  ];
-
-  res.json(customers);
-});
-
 app.use(cors());
+app.use(bodyParser.json());
 app.use("/api/items", items);
+
 app.use("/ibm/personalities", personalities);
-app.use(bodyParser.json);
 
 app.listen(port, () => `Server running on port ${port}`);
